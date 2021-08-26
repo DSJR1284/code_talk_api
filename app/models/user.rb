@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :questions 
+    has_many :questions, through: :answers 
     has_many :languages, through: :questions
     has_many :answers 
     has_secure_password

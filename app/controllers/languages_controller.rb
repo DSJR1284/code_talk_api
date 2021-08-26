@@ -5,11 +5,12 @@ class LanguagesController < ApplicationController
   def index
     @languages = Language.all
 
-    render json: @languages
+    render json: @languages, include: :questions
   end
 
   # GET /languages/1
   def show
+    @questions = @language.questions
     render json: @language
   end
 

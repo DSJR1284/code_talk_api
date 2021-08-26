@@ -10,7 +10,6 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   def show
-    # @questions = @question.answers
     render json: @questions
   end
 
