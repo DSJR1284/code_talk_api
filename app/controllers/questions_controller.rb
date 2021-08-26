@@ -3,7 +3,8 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @questions = Question.all
+    @language = Language.find(params[:language_id])
+    @questions = @language.questions
 
     render json: @questions, include: :answers
   end
