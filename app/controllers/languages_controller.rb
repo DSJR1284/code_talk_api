@@ -1,11 +1,12 @@
 class LanguagesController < ApplicationController
   before_action :set_language, only: [:show, :update, :destroy]
+  # skip_before_action :verify_authenticity_token
 
   # GET /languages
   def index
     @languages = Language.all
 
-    render json: @languages, include: :questions
+    render json: @languages
   end
 
   # GET /languages/1
@@ -46,6 +47,6 @@ class LanguagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def language_params
-      params.fetch(:language, {})
+      params.require(:language).permit(:title)
     end
 end

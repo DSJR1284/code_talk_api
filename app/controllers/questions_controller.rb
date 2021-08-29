@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
     @language = Language.find(params[:language_id])
     @questions = @language.questions
 
-    render json: @questions, include: :answers
+    render json: @questions
   end
 
   # GET /questions/1
@@ -47,6 +47,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.fetch(:question, {})
+      params.require(:question).permit(:title, :question, :language_id, :user_id)
     end
 end
