@@ -3,10 +3,11 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @language = Language.find(params[:language_id])
-    @questions = @language.questions
+    # @language = Language.find(params[:language_id])
+    # @questions = @language.questions
+    @questions = Question.all
 
-    render json: @questions
+    render json: @questions, include: :answers
   end
 
   # GET /questions/1
@@ -47,6 +48,7 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:title, :question, :language_id, :user_id)
+      params.require(:question).permit(:title, :question, :user_id)
+      # params.require(:question).permit(:title, :question, :language_id, :user_id)
     end
 end
