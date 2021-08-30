@@ -2,9 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :update, :destroy]
 
   # GET /questions
-  def index
-    # @language = Language.find(params[:language_id])
-    # @questions = @language.questions
+  def index  
     @questions = Question.all
 
     render json: @questions, include: :answers
