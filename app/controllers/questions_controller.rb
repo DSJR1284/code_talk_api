@@ -15,6 +15,7 @@ class QuestionsController < ApplicationController
 
   # POST /questions
   def create
+    byebug 
     @question = Question.new(question_params)
 
     if @question.save
@@ -46,6 +47,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:title, :question, :language, :user_id)
+      params.require(:question).permit(:title, :description, :language, :user_id)
     end
 end
